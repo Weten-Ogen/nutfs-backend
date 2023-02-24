@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const Product = require('./models/productModel')
 const connection = require('./connect')
-
+const User = require('./models/userModel')
 require('dotenv').config();
 
 const app = express();
@@ -38,6 +38,11 @@ app.get('/product/:id', async(req,res) =>{
     const product = await Product.findById(id);
     res.status(200).json(product)
 })
+app.post('/user' , async(req,res) => {
+    await connection();
+    const  user = await User.create(req.body)
+    res.json(user)
+ })
 app.put('/product/:id', async(req,res) =>{
     await connection()
     const {id} = req.params;
