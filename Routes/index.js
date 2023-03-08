@@ -1,16 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const PostRoute = require('../Routes/PostRoute')
+const bookRouter = require('./bookRoute')
 
 
-router.route('/')
-.get((req,res) => {
-    res.json({"home":false})
+router.route('/').get(
+    (req,res) =>{
+        res.send("this is an api endpoint")
+    }
+)
+
+router.use('/book',bookRouter);
+
+
+router.all('/*',(req,res) =>{
+    res.json({"unsucess": true})
 })
-.post(async (req,res) =>{
-   
-})
-
 
 
 
