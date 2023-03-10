@@ -2,12 +2,9 @@ const Book = require('../Models/Book');
 
 
 exports.index = async (req, res) => {
-    try{
-        const books =await Book.find();
-        res.json(books);
- d   }catch (e) {
-    console.log(e)
-    }    
+    const books =await Book.find();
+    res.json(books);
+  
 }
 
 exports.store = async (req,res) =>{
