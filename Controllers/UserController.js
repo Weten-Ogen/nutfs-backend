@@ -5,8 +5,6 @@ const User = require('../Models/User');
 exports.show = async(req,res) =>{
   const id = req.params.id;
   const user = await User.findById(id)
-  const time = user.createdAt
-  console.log(time)
 
   try{
     if (user) {
@@ -70,7 +68,7 @@ exports.followUser = async(req,res) =>{
   const id = req.params.id
   const {currentUserId} = req.body;
 
-  if (currentUserId === id){
+  if (currentUserId ===id){
     res.status(403).json('Action Forbidden')
   }else{
     try {
